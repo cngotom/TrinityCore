@@ -30,7 +30,7 @@ public:
 
     void Call(WorldSession* session, WorldPacket& packet) const override
     {
-        TC_LOG_DEBUG("network.opcode", "Received handled opcode %s from %s", GetOpcodeNameForLogging(static_cast<OpcodeClient>(packet.GetOpcode())).c_str(),session->GetPlayerName()).c_str();
+        TC_LOG_DEBUG("network.opcode", "Received handled opcode %s from %s", GetOpcodeNameForLogging(static_cast<OpcodeClient>(packet.GetOpcode())).c_str(),session->GetPlayerName().c_str());
         PacketClass nicePacket(std::move(packet));
         nicePacket.Read();
         (session->*HandlerFunction)(nicePacket);
